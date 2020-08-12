@@ -17,6 +17,7 @@ class SeaofBTCapp(tk.Tk):
         tk.Tk.wm_title(self, "Parliament Election 2020")
 
         container = tk.Frame(self)
+        container.config(background="#ffeaa7")
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
@@ -41,19 +42,21 @@ class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        tk.Tk
-        label = tk.Label(self, text="Parliament Election 2020", font=LARGE_FONT)
+
+        self.config(background="#ffeaa7")
+
+        label = tk.Label(self, text="Parliament Election 2020", bg="#ffeaa7", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
-        button1 = tk.Button(self, text="LOGIN", height=3, width=54,
-                           command=lambda: controller.show_frame(PageOne))
+        button1 = tk.Button(self, text="LOGIN", height=3, width=54, bg="#55efc4", font=LARGE_FONT,
+                            command=lambda: controller.show_frame(PageOne))
         button1.pack()
 
-        button2 = tk.Button(self, text="RESULT", height=3, width=54,
+        button2 = tk.Button(self, text="RESULT", height=3, width=54, bg="#00b894", font=LARGE_FONT,
                             command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
-        button3 = tk.Button(self, text="EXIT", height=3, width=54,
+        button3 = tk.Button(self, text="EXIT", height=3, width=54, bg="#55efc4", font=LARGE_FONT,
                             command=lambda: controller.show_frame(PageTwo))
         button3.pack()
 
@@ -88,6 +91,7 @@ class PageTwo(tk.Frame):
         button2 = tk.Button(self, text="Page One",
                             command=lambda: controller.show_frame(PageOne))
         button2.pack()
+
 
 class PageThree(tk.Frame):
 
