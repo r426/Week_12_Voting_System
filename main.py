@@ -13,10 +13,11 @@ class SeaofBTCapp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
+
+        tk.Tk.wm_title(self, "Parliament Election 2020")
+
         container = tk.Frame(self)
-
         container.pack(side="top", fill="both", expand=True)
-
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
@@ -40,18 +41,19 @@ class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Start Page", font=LARGE_FONT)
+        tk.Tk
+        label = tk.Label(self, text="Parliament Election 2020", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
-        button1 = tk.Button(self, text="Visit Page 1",
+        button1 = tk.Button(self, text="LOGIN", height=3, width=54,
                            command=lambda: controller.show_frame(PageOne))
         button1.pack()
 
-        button2 = tk.Button(self, text="Visit Page 2",
+        button2 = tk.Button(self, text="RESULT", height=3, width=54,
                             command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
-        button3 = tk.Button(self, text="Visit Page 2",
+        button3 = tk.Button(self, text="EXIT", height=3, width=54,
                             command=lambda: controller.show_frame(PageTwo))
         button3.pack()
 
@@ -103,5 +105,5 @@ class PageThree(tk.Frame):
         button2.pack()
 
 
-app = SeaofBTCapp()
+app = SeaofBTCapp("nnn")
 app.mainloop()
