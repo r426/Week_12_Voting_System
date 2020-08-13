@@ -67,15 +67,17 @@ class PageOne(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
+        self.config(background="#55efc4")
+
         # username label and text entry box
-        usernameLabel = tk.Label(self, text="User Name")
+        usernameLabel = tk.Label(self, text="User Name", bg="#55efc4")
         username = tk.StringVar()
         usernameEntry = tk.Entry(self, textvariable=username)
         usernameLabel.pack(pady=5, padx=5)
         usernameEntry.pack(pady=5, padx=5)
 
         # password label and password entry box
-        passwordLabel = tk.Label(self, text="Password")
+        passwordLabel = tk.Label(self, text="Password", bg="#55efc4")
         password = tk.StringVar()
         passwordEntry = tk.Entry(self, textvariable=password, show='*')
         passwordLabel.pack(pady=5, padx=5)
@@ -84,7 +86,7 @@ class PageOne(tk.Frame):
         validateLogin = partial(self.validateLogin, username, password)
 
         # login button
-        loginButton = tk.Button(self, text="Login", command=validateLogin)
+        loginButton = tk.Button(self, text="Login", bg="#ffeaa7", command=validateLogin)
         loginButton.pack(pady=5, padx=5)
 
     def validateLogin(self, username, password):
