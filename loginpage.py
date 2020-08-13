@@ -7,6 +7,11 @@ import constants
 
 
 class LoginPage(tk.Frame):
+    user1 = Person("John Peterson", "123")
+    user2 = Person("Peter Johnson", "321")
+    user3 = Person("Eva Jackson", "456")
+    user4 = Person("Jackie Evans", "654")
+    users = [user1, user2, user3, user4]
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -35,14 +40,8 @@ class LoginPage(tk.Frame):
 
     def validateLogin(self, username, userid, controller):
         validuser = False
-        user1 = Person("John Peterson", "123")
-        user2 = Person("Peter Johnson", "321")
-        user3 = Person("Eva Jackson", "456")
-        user4 = Person("Jackie Evans", "654")
-        users = [user1, user2, user3, user4]
         input = Person(username.get(), userid.get())
-
-        for user in users:
+        for user in self.users:
             if user.username == input.username and user.userid == input.userid:
                 validuser = True
         if (validuser):
