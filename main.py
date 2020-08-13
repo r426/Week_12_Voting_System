@@ -83,14 +83,13 @@ class PageOne(tk.Frame):
         idLabel.pack(pady=20)
         idEntry.pack()
 
-        validateLogin = partial(self.validateLogin, username, userid)
+        validateLogin = partial(self.validateLogin, username, userid, controller)
 
         # login button
         loginButton = tk.Button(self, text="Login", bg="#ffeaa7", font=LARGE_FONT, command=validateLogin)
         loginButton.pack(pady=25)
 
-    def validateLogin(self, username, userid):
-        validuser = False
+    def validateLogin(self, username, userid, controller):
         user1 = Person("John Peterson", "123")
         user2 = Person("Peter Johnson", "321")
         user3 = Person("Eva Jackson", "456")
@@ -100,10 +99,9 @@ class PageOne(tk.Frame):
 
         for user in users:
             if user.username == input.username and user.userid == input.userid:
-                validuser = True
-        print(validuser)
-        print("username entered :", username.get())
-        print("password entered :", userid.get())
+                controller.show_frame(StartPage)
+            else:
+                controller.show_frame(StartPage)
         return
 
 
