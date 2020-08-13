@@ -5,6 +5,7 @@
 # https://pythonprogramming.net/change-show-new-frame-tkinter/
 
 import tkinter as tk
+from functools import partial
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -65,16 +66,33 @@ class PageOne(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Page One!!!", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
 
-        button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
-        button1.pack()
+        self.config(background="#55efc4")
 
-        button2 = tk.Button(self, text="Page Two",
-                            command=lambda: controller.show_frame(PageTwo))
-        button2.pack()
+        # username label and text entry box
+        usernameLabel = tk.Label(self, text="Full Name", bg="#55efc4", font=LARGE_FONT)
+        username = tk.StringVar()
+        usernameEntry = tk.Entry(self, textvariable=username)
+        usernameLabel.pack(pady=20, padx=231)
+        usernameEntry.pack()
+
+        # password label and password entry box
+        passwordLabel = tk.Label(self, text="Voter ID", bg="#55efc4", font=LARGE_FONT)
+        password = tk.StringVar()
+        passwordEntry = tk.Entry(self, textvariable=password, show='*')
+        passwordLabel.pack(pady=20)
+        passwordEntry.pack()
+
+        validateLogin = partial(self.validateLogin, username, password)
+
+        # login button
+        loginButton = tk.Button(self, text="Login", bg="#ffeaa7", font=LARGE_FONT, command=validateLogin)
+        loginButton.pack(pady=25)
+
+    def validateLogin(self, username, password):
+        print("username entered :", username.get())
+        print("password entered :", password.get())
+        return
 
 
 class PageTwo(tk.Frame):
@@ -84,12 +102,15 @@ class PageTwo(tk.Frame):
         label = tk.Label(self, text="Page Two!!!", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
-        button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
-        button1.pack()
+        # password label and password entry box
+        passwordLabel = tk.Label(self, text="Password")
+        password = tk.StringVar()
+        passwordEntry = tk.Entry(self, textvariable=password, show='*')
+        passwordLabel.pack(pady=5, padx=5)
+        passwordEntry.pack(pady=5, padx=5)
 
-        button2 = tk.Button(self, text="Page One",
-                            command=lambda: controller.show_frame(PageOne))
+        button2 = tk.Button(self, text="Page Two",
+                            command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
 
@@ -104,8 +125,8 @@ class PageThree(tk.Frame):
                             command=lambda: controller.show_frame(StartPage))
         button1.pack()
 
-        button2 = tk.Button(self, text="Page One",
-                            command=lambda: controller.show_frame(PageOne))
+        button2 = tk.Button(self, text="Page Two",
+                            command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
 
