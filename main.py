@@ -100,9 +100,12 @@ class PageTwo(tk.Frame):
         label = tk.Label(self, text="Page Two!!!", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
-        button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
-        button1.pack()
+        # password label and password entry box
+        passwordLabel = tk.Label(self, text="Password")
+        password = tk.StringVar()
+        passwordEntry = tk.Entry(self, textvariable=password, show='*')
+        passwordLabel.pack(pady=5, padx=5)
+        passwordEntry.pack(pady=5, padx=5)
 
         button2 = tk.Button(self, text="Page Two",
                             command=lambda: controller.show_frame(PageTwo))
@@ -120,8 +123,8 @@ class PageThree(tk.Frame):
                             command=lambda: controller.show_frame(StartPage))
         button1.pack()
 
-        button2 = tk.Button(self, text="Page One",
-                            command=lambda: controller.show_frame(PageOne))
+        button2 = tk.Button(self, text="Page Two",
+                            command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
 
