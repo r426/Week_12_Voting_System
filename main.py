@@ -25,7 +25,7 @@ class SeaofBTCapp(tk.Tk):
 
         self.frames = {}
 
-        for F in (StartPage, PageOne, PageTwo, PageThree):
+        for F in (StartPage, PageOne, PageTwo):
             frame = F(container, self)
 
             self.frames[F] = frame
