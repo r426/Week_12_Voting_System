@@ -32,19 +32,21 @@ class LoginPage(tk.Frame):
         idLabel.pack(pady=20)
         idEntry.pack()
 
-        validateLogin = partial(self.validateLogin, username, userid, controller)
+        validateLogin = partial(self.validateLogin, username, userid, usernameEntry, idEntry, controller)
 
         # login button
         loginButton = tk.Button(self, text="Login", bg="#ffeaa7", font=constants.LARGE_FONT, command=validateLogin)
         loginButton.pack(pady=25)
 
-    def validateLogin(self, username, userid, controller):
+    def validateLogin(self, username, userid, usernameEntry, idEntry, controller):
 
         validuser = False
         input = Person(username.get(), userid.get())
         for user in self.users:
             if user.username == input.username and user.userid == input.userid:
                 validuser = True
+        usernameEntry.delete(0, 'end')
+        idEntry.delete(0, 'end')
         if (validuser):
             controller.show_frame(VotingPage)
         else:
