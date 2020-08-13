@@ -76,23 +76,39 @@ class PageOne(tk.Frame):
         usernameLabel.pack(pady=20, padx=231)
         usernameEntry.pack()
 
-        # password label and password entry box
-        passwordLabel = tk.Label(self, text="Voter ID", bg="#55efc4", font=LARGE_FONT)
-        password = tk.StringVar()
-        passwordEntry = tk.Entry(self, textvariable=password, show='*')
-        passwordLabel.pack(pady=20)
-        passwordEntry.pack()
+        # id label and id entry box
+        idLabel = tk.Label(self, text="Voter ID", bg="#55efc4", font=LARGE_FONT)
+        userid = tk.StringVar()
+        idEntry = tk.Entry(self, textvariable=userid, show='*')
+        idLabel.pack(pady=20)
+        idEntry.pack()
 
-        validateLogin = partial(self.validateLogin, username, password)
+        validateLogin = partial(self.validateLogin, username, userid, controller)
 
         # login button
         loginButton = tk.Button(self, text="Login", bg="#ffeaa7", font=LARGE_FONT, command=validateLogin)
         loginButton.pack(pady=25)
 
-    def validateLogin(self, username, password):
-        print("username entered :", username.get())
-        print("password entered :", password.get())
+    def validateLogin(self, username, userid, controller):
+        user1 = Person("John Peterson", "123")
+        user2 = Person("Peter Johnson", "321")
+        user3 = Person("Eva Jackson", "456")
+        user4 = Person("Jackie Evans", "654")
+        users = [user1, user2, user3, user4]
+        input = Person(username.get(), userid.get())
+
+        for user in users:
+            if user.username == input.username and user.userid == input.userid:
+                controller.show_frame(StartPage)
+            else:
+                controller.show_frame(StartPage)
         return
+
+
+class Person:
+    def __init__(self, username, userid):
+        self.username = username
+        self.userid = userid
 
 
 class PageTwo(tk.Frame):
@@ -114,5 +130,5 @@ class PageTwo(tk.Frame):
         button2.pack()
 
 
-app = SeaofBTCapp("nnn")
+app = SeaofBTCapp()
 app.mainloop()
