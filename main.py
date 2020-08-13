@@ -5,6 +5,7 @@
 # https://pythonprogramming.net/change-show-new-frame-tkinter/
 
 import tkinter as tk
+from functools import partial
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -65,16 +66,31 @@ class PageOne(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Page One!!!", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
 
-        button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
-        button1.pack()
+        # username label and text entry box
+        usernameLabel = tk.Label(self, text="User Name")
+        username = tk.StringVar()
+        usernameEntry = tk.Entry(self, textvariable=username)
+        usernameLabel.pack(pady=5, padx=5)
+        usernameEntry.pack(pady=5, padx=5)
 
-        button2 = tk.Button(self, text="Page Two",
-                            command=lambda: controller.show_frame(PageTwo))
-        button2.pack()
+        # password label and password entry box
+        passwordLabel = tk.Label(self, text="Password")
+        password = tk.StringVar()
+        passwordEntry = tk.Entry(self, textvariable=password, show='*')
+        passwordLabel.pack(pady=5, padx=5)
+        passwordEntry.pack(pady=5, padx=5)
+
+        validateLogin = partial(self.validateLogin, username, password)
+
+        # login button
+        loginButton = tk.Button(self, text="Login", command=validateLogin)
+        loginButton.pack(pady=5, padx=5)
+
+    def validateLogin(self, username, password):
+        print("username entered :", username.get())
+        print("password entered :", password.get())
+        return
 
 
 class PageTwo(tk.Frame):
@@ -88,8 +104,8 @@ class PageTwo(tk.Frame):
                             command=lambda: controller.show_frame(StartPage))
         button1.pack()
 
-        button2 = tk.Button(self, text="Page One",
-                            command=lambda: controller.show_frame(PageOne))
+        button2 = tk.Button(self, text="Page Two",
+                            command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
 
