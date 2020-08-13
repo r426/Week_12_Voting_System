@@ -73,21 +73,21 @@ class PageOne(tk.Frame):
         usernameLabel = tk.Label(self, text="Full Name", bg="#55efc4", font=LARGE_FONT)
         username = tk.StringVar()
         usernameEntry = tk.Entry(self, textvariable=username)
-        usernameLabel.pack(pady=5, padx=231)
+        usernameLabel.pack(pady=20, padx=231)
         usernameEntry.pack()
 
         # password label and password entry box
         passwordLabel = tk.Label(self, text="Voter ID", bg="#55efc4", font=LARGE_FONT)
         password = tk.StringVar()
         passwordEntry = tk.Entry(self, textvariable=password, show='*')
-        passwordLabel.pack(pady=5)
+        passwordLabel.pack(pady=20)
         passwordEntry.pack()
 
         validateLogin = partial(self.validateLogin, username, password)
 
         # login button
         loginButton = tk.Button(self, text="Login", bg="#ffeaa7", font=LARGE_FONT, command=validateLogin)
-        loginButton.pack(pady=5)
+        loginButton.pack(pady=25)
 
     def validateLogin(self, username, password):
         print("username entered :", username.get())
