@@ -39,6 +39,7 @@ class LoginPage(tk.Frame):
         loginButton.pack(pady=25)
 
     def validateLogin(self, username, userid, controller):
+
         validuser = False
         input = Person(username.get(), userid.get())
         for user in self.users:
