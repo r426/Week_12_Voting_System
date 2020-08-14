@@ -3,15 +3,13 @@ from functools import partial
 from votingpage import VotingPage
 from errorpage import ErrorPage
 from person import Person
+from dataclass import DataClass
 import constants
 
 
 class LoginPage(tk.Frame):
-    user1 = Person("John Peterson", "123")
-    user2 = Person("Peter Johnson", "321")
-    user3 = Person("Eva Jackson", "456")
-    user4 = Person("Jackie Evans", "654")
-    users = [user1, user2, user3, user4]
+    data = DataClass()
+    users = [data.user1, data.user2, data.user3, data.user4]
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
