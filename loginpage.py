@@ -3,13 +3,11 @@ from functools import partial
 from votingpage import VotingPage
 from errorpage import ErrorPage
 from person import Person
-from dataclass import DataClass
+import globals
 import constants
 
 
 class LoginPage(tk.Frame):
-    data = DataClass()
-    users = [data.user1, data.user2, data.user3, data.user4]
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -40,7 +38,7 @@ class LoginPage(tk.Frame):
 
         validuser = False
         input = Person(username.get(), userid.get())
-        for user in self.users:
+        for user in globals.users:
             if user.username == input.username and user.userid == input.userid:
                 validuser = True
         usernameEntry.delete(0, 'end')
