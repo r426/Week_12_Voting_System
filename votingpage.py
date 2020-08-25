@@ -31,9 +31,9 @@ class VotingPage(tk.Frame):
         for val, party in enumerate(globals.parties):
             radio = tk.Radiobutton(self, text=party.name, bg="#ffeaa7", padx=20, font=constants.LARGE_FONT,
                                    variable=index,
-                                   command=getindex, value=val)
+                                   command=lambda: getindex, value=val)
             radio.pack(anchor=tk.W, padx=217)
 
         button = tk.Button(self, text="Submit", bg="#55efc4", font=constants.LARGE_FONT,
-                           command=incrementvotes(index.get()))
+                           command=lambda: incrementvotes(index.get()))
         button.pack(pady=20)
