@@ -21,9 +21,8 @@ class VotingPage(tk.Frame):
 
         def incrementvotes(index):
             globals.parties[index].votes += 1
-            print(globals.parties[index].votes)
-            # from startpage import StartPage
-            # controller.show_frame(StartPage)
+            from startpage import StartPage
+            controller.show_frame(StartPage)
 
         label = tk.Label(self, text="Please vote:", bg="#ffeaa7", font=constants.LARGE_FONT)
         label.pack(pady=18)
