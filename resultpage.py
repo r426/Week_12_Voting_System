@@ -19,6 +19,7 @@ class ResultPage(tk.Frame):
     def update(self):
         self.config(background="#ffeaa7")
         for i in range(len(globals.parties)):
+            # FIXME override updates instead of adding them up at the bottom. pack –> place?
             lbl = 'tk.Label(self, text="%d. %s% d", bg="#ffeaa7", fg="#db0a63", font=constants.LARGE_FONT).pack(padx=230)' % (
                 i + 1, globals.parties[i].name, globals.parties[i].votes)
             exec(lbl)
